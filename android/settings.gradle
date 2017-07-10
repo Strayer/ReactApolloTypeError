@@ -1,0 +1,3 @@
+rootProject.name = 'ReactApolloTypeError'
+
+include ':app'
