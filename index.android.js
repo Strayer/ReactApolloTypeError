@@ -12,7 +12,17 @@ import {
   View
 } from 'react-native';
 
-export default class ReactApolloTypeError extends Component {
+import { gql, graphql } from 'react-apollo';
+import { ApolloClient, ApolloProvider } from 'react-apollo';
+
+const query = gql`{
+  people {
+    id
+    name
+  }
+}`;
+
+class ReactApolloTypeError extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -30,6 +40,16 @@ export default class ReactApolloTypeError extends Component {
     );
   }
 }
+
+const WrappedComponent = graphql(query)(ReactApolloTypeError);
+
+export default IndexComponent = () => {
+	return (
+		<ApolloProvider client={new ApolloClient()}>
+			<WrappedComponent />
+		</ApolloProvider>
+	);
+};
 
 const styles = StyleSheet.create({
   container: {
